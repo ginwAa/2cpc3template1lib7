@@ -1,3 +1,4 @@
+#incldue "modulus.cpp"
 struct linear {
     vector<int> _d, _md;
     void mul(vector<mint> &a, vector<mint> &b) {
