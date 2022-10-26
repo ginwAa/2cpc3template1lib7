@@ -1,3 +1,4 @@
+#include "modulus.cpp"
 vector<mint> fact;
 vector<mint> inv_fact;
 mint C(int n, int k) {
