@@ -1,7 +1,7 @@
 struct bcc {
     int n, dt, ex;
-    vector<int> low, dfn, stk;
-    vector<vector<int>> g;
+    std::vector<int> low, dfn, stk;
+    std::vector<std::vector<int>> g;
     explicit bcc(int n): n(n), low(n), dfn(n, -1), g(n) {
         stk.reserve(n);
         dt = 0;
@@ -11,15 +11,15 @@ struct bcc {
         g[u].emplace_back(v);
         g[v].emplace_back(u);
     }
-    function<void(int)> dfs = [&](int u) {
+    std::function<void(int)> dfs = [&](int u) {
         dfn[u] = low[u] = dt++;
         stk.emplace_back(u);
         for (auto v : g[u]) {
             if (dfn[v] < 0) {
                 dfs(v);
-                low[u] = min(low[u], low[v]);
+                low[u] = std::min(low[u], low[v]);
                 if (low[v] == dfn[u]) {
-                    g.emplace_back(vector<int>(0));
+                    g.emplace_back(std::vector<int>(0));
                     int x;
                     do {
                         x = stk.back();
@@ -32,7 +32,7 @@ struct bcc {
                     ++ex;
                 }
             } else {
-                low[u] = min(low[u], dfn[v]);
+                low[u] = std::min(low[u], dfn[v]);
             }
         }
     };
